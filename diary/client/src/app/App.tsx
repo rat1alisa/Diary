@@ -1,3 +1,4 @@
+import { LoginPage } from '@pages/login/ui/LoginPage';
 import { useState, useEffect } from 'react'
 import './App.css'
 
@@ -14,14 +15,15 @@ function App() {
       .then((data: DataResponse) => setData(data.message));
   }, []);
 
-  return (
+  return <LoginPage />
+  /*(
     <>
     <div className="mainBlock">
       <h1>Backend Response: {data}</h1>
     </div>
     </>
   );
-  /*const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0)
 
   return (
     <>

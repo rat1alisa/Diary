@@ -6,13 +6,8 @@
 }
 
 .mainBlock{
-  color: rgb(255, 255, 255);
+  color: rgb(206, 174, 174);
   font-family: "PT Serif", serif;
   font-weight: 400;
   font-style: normal;
-}
-
-.mainBlock h1:hover {
-  color: rgb(206, 174, 174);
-  
 }
