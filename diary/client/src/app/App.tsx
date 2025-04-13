@@ -1,12 +1,12 @@
-import { LoginPage } from '@pages/login/ui/LoginPage';
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { Header } from '@widgets/ui/header/Header';
+import { Outlet } from 'react-router-dom';
 
 interface DataResponse {
   message: string;
 }
 
-function App() {
+export const App = ()  => {
   const [data, setData] = useState<string>('');
 
   useEffect(() => {
@@ -15,25 +15,14 @@ function App() {
       .then((data: DataResponse) => setData(data.message));
   }, []);
 
-  return <LoginPage />
-  /*(
-    <>
-    <div className="mainBlock">
-      <h1>Backend Response: {data}</h1>
-    </div>
-    </>
-  );
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+    <Header />
+    <main>
+      <h1>Home</h1>
+      <h2>Backend Response: {data}</h2>
+      <Outlet />
+    </main>
     </>
-  )*/
+  );
 }
-
-export default App;
