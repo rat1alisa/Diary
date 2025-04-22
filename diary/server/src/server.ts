@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { sequelize } from '../shared/db/sequelize';
 
 const app = express();
 const port = 3001;
@@ -10,6 +11,14 @@ app.use(express.json());
 const users = [
   { email: 'test@example.com', password: '123456' },
 ];
+
+sequelize.sync().then(() => {
+  console.log('DB connected & models synced');
+});
+
+app.listen(port, () => {
+  console.log(`Сервер запущен на http://localhost:${port}`);
+});
 
 app.post('/api/signup', (req, res) => {
   const { email, password } = req.body;
@@ -30,9 +39,4 @@ app.post('/api/login', (req, res) => {
   } else {
     res.status(401).json({ message: 'Неверный email или пароль' });
   }
-});
-
-
-app.listen(port, () => {
-  console.log(`Сервер запущен на http://localhost:${port}`);
 });
