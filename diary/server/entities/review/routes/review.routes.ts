@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import { reviewController } from '../controller/review.controller';
+import { asyncHandler } from '../../../shared/lib/asyncHandler';
 
+const reviewRoutes = Router();
 
-const router = Router();
+reviewRoutes.get('/', asyncHandler(reviewController.getAll));
+reviewRoutes.get('/:id', asyncHandler(reviewController.getById));
+reviewRoutes.post('/', asyncHandler(reviewController.create));
+reviewRoutes.put('/:id', asyncHandler(reviewController.update));
+reviewRoutes.delete('/:id', asyncHandler(reviewController.remove));
 
-router.get('/', reviewController.getAll);
-router.get('/:id', reviewController.getById);
-router.post('/', reviewController.create);
-router.put('/:id', reviewController.update);
-router.delete('/:id', reviewController.remove);
-
-export default router;
+export default reviewRoutes;

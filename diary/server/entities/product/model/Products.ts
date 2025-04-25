@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../shared/db/sequelize';
+import { sequelize } from '../../../shared/db/sequelize';
 
 export const Product = sequelize.define('Product', {
   id: {

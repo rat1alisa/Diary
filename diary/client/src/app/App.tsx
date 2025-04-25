@@ -10,9 +10,9 @@ export const App = ()  => {
   const [data, setData] = useState<string>('');
 
   useEffect(() => {
-    fetch('/api')
+    /*fetch('/api')
       .then((response) => response.json())
-      .then((data: DataResponse) => setData(data.message));
+      .then((data: DataResponse) => setData(data.message));*/
   }, []);
 
   return (

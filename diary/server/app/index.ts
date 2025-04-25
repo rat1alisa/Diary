@@ -1,3 +1,18 @@
-import router from "../entities/review/routes/review.routes";
+import express from 'express';
+import cors from 'cors';
+import reviewRoutes from '../entities/reviews/routes/review.routes';
+import { errorHandler } from '../shared/middleware/errorHandler';
 
-app.use('/api/reviews', router);
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Роуты
+app.use('/api/reviews', reviewRoutes);
+
+// Middleware - глобальная обработка ошибок 
+app.use(errorHandler);
+
+export default app;
