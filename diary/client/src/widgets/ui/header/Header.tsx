@@ -1,21 +1,55 @@
 import { Link } from 'react-router-dom';
+import './Header.scss';
 
 export const Header = () => {
   return (
     <header className="CLASS__NAME">
-      <div className="CLASS__NAME">
-        
-        <Link to="/" className="CLASS__NAME">
-          MyApp
-        </Link>
+      <div className="CLASS__NAME-container"> 
+        <input
+          type="checkbox"
+          id="main-navigation-toggle"
+          className="btn btn--close"
+          title="Toggle main navigation"
+        />
+        <label htmlFor="main-navigation-toggle" className="menu-open">
+          <span />
+        </label>
 
-        <nav className="CLASS__NAME">
-          <Link to="/login" className="CLASS__NAME">
-            Login
-          </Link>
-          <Link to="/registration" className="CLASS__NAME">
-            Register
-          </Link>
+        <nav id="main-navigation" className="nav-main">
+          <ul className="menu">
+            <li className="menu__item">
+              <Link to="/" className="menu__link sixpx">
+                MyApp
+              </Link>
+            </li>
+            <li className="menu__item">
+              <Link to="/timer" className="menu__link sixpx">
+                Timer
+              </Link>
+            </li>
+            <li className="menu__item">
+              <Link to="/clock" className="menu__link sixpx">
+                Clock
+              </Link>
+            </li>
+            <li className="menu__item">
+              <a className="menu__link sixpx" href="#0">
+                Sign in/up
+              </a>
+              <ul className="submenu">
+                <li className="menu__item">
+                  <Link to="/login" className="menu__link threerpx">
+                    Login
+                  </Link>
+                </li>
+                <li className="menu__item">
+                  <Link to="/registration" className="menu__link threerpx">
+                    Register
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </nav>
       </div>
     </header>

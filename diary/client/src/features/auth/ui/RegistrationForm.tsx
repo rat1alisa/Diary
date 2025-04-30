@@ -35,23 +35,24 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="CLASS__NAME">
+    <form onSubmit={handleSubmit(onSubmit)} className="form-container sign-up-container">
+      <h1>Create Account</h1>
       <div>
-        <label className="CLASS__NAME">Username</label>
         <Input
           {...register('username', { required: 'Username is required' })}
           className="CLASS__NAME"
+          placeholder='Username'
         />
         {errors.username && (
           <p className="CLASS__NAME">{errors.username.message}</p>
         )}
       </div>
       <div>
-        <label className="CLASS__NAME">Email</label>
         <Input
           type="email"
           {...register('email', { required: 'Email is required' })}
           className="CLASS__NAME"
+          placeholder='Email'
         />
         {errors.email && (
           <p className="CLASS__NAME">{errors.email.message}</p>
@@ -59,11 +60,11 @@ export const RegistrationForm = () => {
       </div>
 
       <div>
-        <label className="CLASS__NAME">Password</label>
         <Input
           type="password"
           {...register('password', { required: 'Password is required' })}
           className="CLASS__NAME"
+          placeholder='Password'
         />
         {errors.password && (
           <p className="CLASS__NAME">{errors.password.message}</p>
@@ -71,11 +72,11 @@ export const RegistrationForm = () => {
       </div>
 
       <div>
-        <label className="CLASS__NAME">Confirm Password</label>
         <Input
           type="password"
           {...register('confirmPassword', { required: 'Confirm Password is required' })}
           className="CLASS__NAME"
+          placeholder='Confirm Password'
         />
         {errors.confirmPassword && (
           <p className="CLASS__NAME">{errors.confirmPassword.message}</p>

@@ -13,7 +13,8 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="form-container sign-in-container">
+      <h1 color="black">Sign in</h1>
       <Input
         placeholder="Username"
         {...register("username")}
