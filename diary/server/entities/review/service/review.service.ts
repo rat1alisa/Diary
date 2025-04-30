@@ -1,4 +1,6 @@
-import { Review } from "../../../models/Reviews";
+// import { Review } from "../../../models/Reviews"; // не правильно указан путь к файлу(модели Reviews)
+
+import { Review } from "../model/Reviews"; // - правильный путь к файлу
 
 export const reviewService = {
   async getAll() {

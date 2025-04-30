@@ -1,7 +1,14 @@
-import { DataTypes, Sequelize } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../../../shared/db/sequelize';
 
-export const User = sequelize.define('User', {
+export interface UserAttributes {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const User = sequelize.define<Model<UserAttributes>>('User', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,

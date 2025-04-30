@@ -1,8 +1,18 @@
-import { DataTypes } from 'sequelize';
+
+import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../../../shared/db/sequelize';
 import { User } from '../../user/model/Users';
 
-export const Review = sequelize.define('Review', {
+
+export interface ReviewData {
+  id: number;
+  user_id: number;
+  name: string;
+  description: string;
+  value: number;
+}
+
+export const Review = sequelize.define<Model<ReviewData>>('Review', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -13,11 +23,11 @@ export const Review = sequelize.define('Review', {
     allowNull: false,
   },
   name: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(200),
     allowNull: false,
   },
   description: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(500),
     allowNull: false,
   },
   value: {
