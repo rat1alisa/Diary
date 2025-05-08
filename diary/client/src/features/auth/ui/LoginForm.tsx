@@ -5,6 +5,8 @@ import { Input } from '@shared/ui/Input';
 import { Button } from '@shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@shared/store/userSlice';
 
 //схема валидации
 const loginSchema = z.object({
@@ -25,6 +27,7 @@ export const LoginForm = () => {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
@@ -36,10 +39,9 @@ export const LoginForm = () => {
       });
 
       const resData = await res.json();
-
-      if (!res.ok) {
-        alert(resData.message || 'Login failed');
-        return;
+      if (res.ok) {
+        dispatch(setUser(resData.user)); //сохраняем пользователя в store
+        navigate('/');
       }
 
       // Храни токен при необходимости (resData.token)
