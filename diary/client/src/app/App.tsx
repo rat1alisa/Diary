@@ -3,6 +3,7 @@ import { Header } from '@widgets/ui/header/Header';
 import { Outlet } from 'react-router-dom';
 import './App.css'
 import { HomePage } from '@pages/HomePage/HomePage';
+import { AppWrapper } from '@shared/ui/AppWrapper';
 
 interface DataResponse {
   message: string;
@@ -11,9 +12,9 @@ interface DataResponse {
 export const App = ()  => {
 
   return (
-    <>
-    <Header />
-    <HomePage />
-    </>
+    <AppWrapper>
+      <Header />
+      <HomePage />
+    </AppWrapper>
   );
 }

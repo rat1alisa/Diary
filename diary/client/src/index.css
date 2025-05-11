@@ -11,6 +11,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-color: black;
+  --text-color: white;
 }
 
 a {
@@ -28,6 +31,14 @@ body {
   place-items: center;
   /*min-width: 320px;
   min-height: 100vh;*/
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #f2f2f2;
 }
 
 h1 {

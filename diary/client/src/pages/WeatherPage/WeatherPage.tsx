@@ -1,5 +1,5 @@
 
-import { WeatherInfo } from '@features/weather/weatherInfo';
+import { WeatherInfo } from '@features/weather/WeatherInfo';
 import { useEffect, useState } from 'react';
 
 interface WeatherPageProps {
