@@ -1,18 +1,15 @@
 import { WeatherInfo } from '@features/weather/WeatherInfo';
-import { Header } from '@widgets/ui/header/Header';
-import { useEffect, useState } from 'react';
+import { createEntityAdapter } from '@reduxjs/toolkit';
 
 interface WeatherPageProps {
   city: string;
 }
 
-export const WeatherPage = ({ city }: WeatherPageProps) => {
+export const WeatherPage = () => {
   return (
     <div className="">
-      <Header />
       <h1>Weather page:</h1>
-      <WeatherInfo city={city} />
-      {/*city = {city}*/}
+      <WeatherInfo city="Минск" />
     </div>
   );
 };

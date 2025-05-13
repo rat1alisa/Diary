@@ -16,6 +16,11 @@
   --text-color: white;
 }
 
+html.dark {
+  --bg-color: #121212;
+  --text-color: #f2f2f2;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

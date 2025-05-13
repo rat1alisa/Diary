@@ -24,17 +24,15 @@ const DigitalClock: React.FC = () => {
 
     return (
         <div>
-            <Header />
             <div className="clock-container">
-            <div className="clock">
-                {time.split('').map((digit, index) => (
-                    <div key={index} className="digit">
-                        <b>{digit}</b>
-                    </div>
-                ))}
+                <div className="clock">
+                    {time.split('').map((digit, index) => (
+                        <div key={index} className="digit">
+                            <b>{digit}</b>
+                        </div>
+                    ))}
+                </div>
             </div>
-            
-        </div>
         </div>
     );
 };

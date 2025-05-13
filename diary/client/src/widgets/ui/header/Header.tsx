@@ -1,3 +1,4 @@
+import { ThemeToggle } from '@shared/ui/ThemeToggle';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 
@@ -56,6 +57,8 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
+
+        <ThemeToggle />
       </div>
     </header>
   );
