@@ -56,23 +56,22 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="CLASS__NAME">
-      <div>
-        <label>Email</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="loginForm">
+      <div className='emailBlock'>
+        <b>Email</b>
         <Input
           type="email"
           {...register('email')}
           className="CLASS__NAME"
+          placeholder='email'
         />
         {errors.email && <p>{errors.email.message}</p>}
-      </div>
-
-      <div>
-        <label>Password</label>
+        <b>Password</b>
         <Input
           type="password"
           {...register('password')}
           className="CLASS__NAME"
+          placeholder='password'
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>

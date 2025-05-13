@@ -18,10 +18,15 @@ export const LoginPage = () => {
     <div className="App">
       <Header />
       <div>
-      <h2>Sign in/up Form</h2>
       <div className={containerClass} id="container">
-        <LoginForm />
-        <RegistrationForm />
+        <div className="block12">
+          <div className="block1">
+          <LoginForm />
+          </div>
+          <div className="block2" >
+            <RegistrationForm />
+          </div>
+        </div>
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
@@ -66,3 +71,4 @@ export const LoginPage = () => {
     </div>
 
   );*/
+

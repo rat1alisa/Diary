@@ -1,5 +1,5 @@
-
 import { WeatherInfo } from '@features/weather/WeatherInfo';
+import { Header } from '@widgets/ui/header/Header';
 import { useEffect, useState } from 'react';
 
 interface WeatherPageProps {
@@ -7,11 +7,11 @@ interface WeatherPageProps {
 }
 
 export const WeatherPage = ({ city }: WeatherPageProps) => {
- 
   return (
     <div className="">
+      <Header />
       <h1>Weather page:</h1>
-      <WeatherInfo city='' />
+      <WeatherInfo city={city} />
       {/*city = {city}*/}
     </div>
   );

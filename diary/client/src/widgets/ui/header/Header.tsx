@@ -23,6 +23,11 @@ export const Header = () => {
               </Link>
             </li>
             <li className="menu__item">
+              <Link to="/weather" className="menu__link sixpx">
+                Weather
+              </Link>
+            </li>
+            <li className="menu__item">
               <Link to="/timer" className="menu__link sixpx">
                 Timer
               </Link>

@@ -9,6 +9,9 @@ import { App } from '@app/App'
 import DigitalClock from '@pages/clock/ui/ClockPage'
 import { TimerPage } from '@pages/timer/ui/TimerPage'
 import { store } from '@shared/store'
+import { WeatherPage } from '@pages/WeatherPage/WeatherPage';
+
+
 
 
 createRoot(document.getElementById('root')!).render(
@@ -21,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/clock" element={<DigitalClock />} />
         <Route path="/timer" element={<TimerPage />} />
+        <Route path="/weather" element={<WeatherPage />} />
       </Routes>
   </BrowserRouter>
   </Provider>
