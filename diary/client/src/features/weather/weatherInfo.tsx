@@ -41,7 +41,7 @@ if (error) return <p className="text-red-500 text-sm">{error}</p>;
 if (temp === null) return <p className="text-gray-400 text-sm">Загрузка погоды...</p>;
 
 return (
-  <div className="weather__card">
+  <div className="weather-card">
     {icon && (
       <img
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}

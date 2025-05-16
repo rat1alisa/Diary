@@ -12,8 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-color: black;
-  --text-color: white;
+  --bg-color: #ffffff;
+  --text-color: rgb(0, 0, 0);
 }
 
 html.dark {
