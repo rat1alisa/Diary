@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import './Header.scss';
 
 export const Header = () => {
+  const closeMenu = () => {
+    const toggle = document.getElementById('main-navigation-toggle') as HTMLInputElement;
+    if (toggle) {
+      toggle.checked = false;
+    }
+  };
+
   return (
     <header className="CLASS__NAME">
       <div className="CLASS__NAME-container"> 
@@ -19,22 +26,22 @@ export const Header = () => {
         <nav id="main-navigation" className="nav-main">
           <ul className="menu">
             <li className="menu__item">
-              <Link to="/" className="menu__link sixpx">
+              <Link to="/" className="menu__link sixpx" onClick={closeMenu}>
                 MyApp
               </Link>
             </li>
             <li className="menu__item">
-              <Link to="/weather" className="menu__link sixpx">
+              <Link to="/weather" className="menu__link sixpx" onClick={closeMenu}>
                 Weather
               </Link>
             </li>
             <li className="menu__item">
-              <Link to="/timer" className="menu__link sixpx">
+              <Link to="/timer" className="menu__link sixpx" onClick={closeMenu}>
                 Timer
               </Link>
             </li>
             <li className="menu__item">
-              <Link to="/clock" className="menu__link sixpx">
+              <Link to="/clock" className="menu__link sixpx" onClick={closeMenu}>
                 Clock
               </Link>
             </li>
@@ -44,12 +51,12 @@ export const Header = () => {
               </a>
               <ul className="submenu">
                 <li className="menu__item">
-                  <Link to="/login" className="menu__link threerpx">
+                  <Link to="/login" className="menu__link threerpx" onClick={closeMenu}>
                     Login
                   </Link>
                 </li>
                 <li className="menu__item">
-                  <Link to="/registration" className="menu__link threerpx">
+                  <Link to="/registration" className="menu__link threerpx" onClick={closeMenu}>
                     Register
                   </Link>
                 </li>

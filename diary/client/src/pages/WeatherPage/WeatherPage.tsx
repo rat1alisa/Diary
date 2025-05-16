@@ -1,5 +1,4 @@
-import { WeatherInfo } from '@features/weather/WeatherInfo';
-import { createEntityAdapter } from '@reduxjs/toolkit';
+import { WeatherInfo } from '@features/weather/weatherInfo';
 
 interface WeatherPageProps {
   city: string;
