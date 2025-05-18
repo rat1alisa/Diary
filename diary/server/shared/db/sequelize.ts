@@ -14,3 +14,11 @@ export const sequelize = new Sequelize(
     logging: false,
   }
 );
+
+sequelize.sync({ force: false }) 
+  .then(() => {
+    console.log("Database synchronized successfully.");
+  })
+  .catch((error) => {
+    console.error("Error synchronizing the database:", error);
+  });

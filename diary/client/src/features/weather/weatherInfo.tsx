@@ -1,57 +1,79 @@
+import { RootState } from '@shared/store';
+import { toggleFavorite } from '@shared/store/favoritesSlice';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface WeatherInfoProps {
   city: string;
 }
 
+interface WeatherData {
+  temp: number;
+  icon: string;
+  pressure: number;
+  humidity: number;
+  description: string;
+}
+
 export const WeatherInfo = ({ city }: WeatherInfoProps) => {
-  const [temp, setTemp] = useState<number | null>(null);
-const [icon, setIcon] = useState<string | null>(null);
-const [pressure, setPressure] = useState<number | null>(null);
-const [humidity, setHumidity] = useState<number | null>(null);
-const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-useEffect(() => {
-  const fetchWeather = async () => {
-    try {
-      const apiKey = import.meta.env.VITE_OPENWEATHER_API;
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`
-      );
-      const data = await res.json();
+  const dispatch = useDispatch();
 
-      if (res.ok) {
-        setTemp(data.main.temp);
-        setIcon(data.weather[0].icon);
-        setPressure(data.main.pressure);
-        setHumidity(data.main.humidity);
+  const isFavorite = useSelector((state: RootState) =>
+    state.cities.cities.includes(city)
+  );
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const apiKey = import.meta.env.VITE_OPENWEATHER_API;
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ru`
+        );
+        const json = await res.json();
+
+        if (!res.ok) {
+          setError(json.message || 'Ошибка загрузки');
+          return;
+        }
+
+        setData({
+          temp: json.main.temp,
+          icon: json.weather[0].icon,
+          pressure: json.main.pressure,
+          humidity: json.main.humidity,
+          description: json.weather[0].description,
+        });
         setError(null);
-      } else {
-        setError(data.message);
+      } catch {
+        setError('Ошибка загрузки погоды');
       }
-    } catch (e) {
-      setError('Ошибка загрузки погоды');
-    }
-  };
+    };
 
-  fetchWeather();
-}, [city]);
+    fetchWeather();
+  }, [city]);
 
-if (error) return <p className="text-red-500 text-sm">{error}</p>;
-if (temp === null) return <p className="text-gray-400 text-sm">Загрузка погоды...</p>;
+  if (error) return <div className="weather-card error">{city}: {error}</div>;
+  if (!data) return <div className="weather-card loading">{city}: загрузка...</div>;
 
-return (
-  <div className="weather-card">
-    {icon && (
+  return (
+    <div className="weather-card">
+      <div className="card-header">
+        <h3>{city}</h3>
+        <button className="like-btn" onClick={() => dispatch(toggleFavorite(city))}>
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
+      </div>
       <img
-        src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt="Погода"
-        className="w-8 h-8"
+        src={`https://openweathermap.org/img/wn/${data.icon}@2x.png`}
+        alt={data.description}
+        className="weather-icon"
       />
-    )}
-    <span>{city}: {temp?.toFixed(1)}°C</span>
-   <p>Давление: {pressure} гПа</p>
-   <p>Влажность: {humidity}%</p>
-  </div>
-);
+      <p className="temp">{data.temp.toFixed(1)}°C — {data.description}</p>
+      <p>Давление: {data.pressure} гПа</p>
+      <p>Влажность: {data.humidity}%</p>
+    </div>
+  );
 };

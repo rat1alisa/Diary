@@ -41,12 +41,12 @@ $background-color_3: #555;
 	width: 100%;
 	border: none;
 	background: none;
-	color: $color_1;
+	color:$background-color_2;
 	font-size: 16px;
 	padding: 10px;
 	outline: none;
 	&::placeholder {
-		color: $color_2;
+		color: $background-color_2;
 	}
 }
 .search-icon {
