@@ -62,44 +62,44 @@ export const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="CLASS__NAME">
-      <div>
-        <label>Username</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="loginForm">
+      <div className='registerBlock'>
+        <b>Username</b>
         <Input
           {...register('username', { required: 'Username is required' })}
-          className="CLASS__NAME"
+          placeholder='username'
         />
-        {errors.username && <p>{errors.username.message}</p>}
+        {errors.username && <p className='errorMas'>{errors.username.message}</p>}
       </div>
 
-      <div>
-        <label>Email</label>
+      <div className='registerBlock'>
+        <b>Email</b>
         <Input
           type="email"
           {...register('email', { required: 'Email is required' })}
-          className="CLASS__NAME"
+          placeholder='email'
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className='errorMas'>{errors.email.message}</p>}
       </div>
 
-      <div>
-        <label>Password</label>
+      <div className='registerBlock'>
+        <b>Password</b>
         <Input
           type="password"
           {...register('password', { required: 'Password is required' })}
-          className="CLASS__NAME"
+          placeholder='password'
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && <p className='errorMas'>{errors.password.message}</p>}
       </div>
 
-      <div>
-        <label>Confirm Password</label>
+      <div className='registerBlock'>
+        <b>Confirm Password</b>
         <Input
           type="password"
           {...register('confirmPassword', { required: 'Confirm Password is required' })}
-          className="CLASS__NAME"
+          placeholder='confirm password'
         />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        {errors.confirmPassword && <p className='errorMas'>{errors.confirmPassword.message}</p>}
       </div>
 
       <Button type="submit" className="CLASS__NAME" disabled={loading}>

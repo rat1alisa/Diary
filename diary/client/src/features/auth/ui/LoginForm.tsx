@@ -62,10 +62,9 @@ export const LoginForm = () => {
         <Input
           type="email"
           {...register('email')}
-          className="CLASS__NAME"
           placeholder='email'
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && <p className='errorMas'>{errors.email.message}</p>}
         <b>Password</b>
         <Input
           type="password"
@@ -73,12 +72,12 @@ export const LoginForm = () => {
           className="CLASS__NAME"
           placeholder='password'
         />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+        {errors.password && <p className='errorMas'>{errors.password.message}</p>}
 
       <Button type="submit" disabled={loading}>
         {loading ? 'Logging in...' : 'Login'}
       </Button>
+      </div>
     </form>
   );
 };

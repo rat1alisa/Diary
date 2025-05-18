@@ -8,7 +8,7 @@ interface WeatherPageProps {
 
 export const WeatherPage = () => {
   return (
-    <div className="">
+    <div className="weather-page">
       <h1>Weather page:</h1>
       <WeatherSearch />
       <WeatherInfo city="Минск" />

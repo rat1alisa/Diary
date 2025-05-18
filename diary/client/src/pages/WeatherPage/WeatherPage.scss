@@ -1,9 +1,12 @@
+$color_1: #101420;
+
 .weather-page {
     padding: 20px;
-    max-width: 900px;
+    width: 100vw;
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    background-color: $color_1;
   
     &__title {
       font-size: 2.5rem;
@@ -153,4 +156,5 @@
       }
     }
   }
+  
   

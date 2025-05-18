@@ -11,7 +11,6 @@ export const Header = () => {
   };
 
   return (
-    <header className="CLASS__NAME">
       <div className="CLASS__NAME-container"> 
         <input
           type="checkbox"
@@ -67,6 +66,5 @@ export const Header = () => {
 
         <ThemeToggle />
       </div>
-    </header>
   );
 };

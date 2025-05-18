@@ -16,8 +16,7 @@ export const LoginPage = () => {
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
-    <div className="App">
-      <div>
+    <div className="LoginPage">
         <div className={containerClass} id="container">
           <div className="block12">
             <div className="block1">
@@ -57,6 +56,5 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };

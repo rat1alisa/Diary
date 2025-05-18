@@ -1,12 +1,13 @@
 $color_1: #fff;
 $color_2: #aaa;
-$background-color_1: #1e1e1e;
+$background-color_1: #f0e7d5;
 $background-color_2: #333;
 $background-color_3: #555;
 
+
 .search-container {
 	position: relative;
-	width: 310px;
+	width: 400px;
     margin: 20px;
 }
 .search-bar {
@@ -76,4 +77,10 @@ $background-color_3: #555;
 	transition: all 0.5s ease;
 	transform: translate(-50%, -50%) scale(0);
 	z-index: -1;
+}
+
+.searchButton {
+	background: none;
+	border: none;
+	outline: none;
 }
