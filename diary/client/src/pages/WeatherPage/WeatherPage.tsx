@@ -17,21 +17,6 @@ const eveningImg = 'https://static.vecteezy.com/system/resources/thumbnails/024/
 const nightImg = 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2Zyc2t5X3N0YXJzX25pZ2h0X3NwYWNlLWltYWdlLWt5YmNwMmJmLmpwZw.jpg';
 const morningImg = 'https://img.freepik.com/premium-photo/abstract-background-sky-gradient-shade-from-orange-color-blue-color_50039-331.jpg';
 
-function getBackgroundImageByTime(): string {
-  const hour = new Date().getHours();
-
-  if (hour >= 11 && hour <= 17) {
-    return daytimeImg;
-  } else if (hour > 17 && hour <= 23) {
-    return eveningImg;
-  } else if (hour > 23 || hour <= 5) {
-    return nightImg;
-  } else if (hour > 5 && hour < 11) {
-    return morningImg;
-  }
-  return nightImg;
-}
-
 export const WeatherPage: React.FC = () => {
   const [query, setQuery] = useState('');
   const [cities, setCities] = useState<WeatherData[]>([]);
@@ -99,7 +84,6 @@ export const WeatherPage: React.FC = () => {
     setQuery('');
   };
 
-  // Установка/снятие избранного
   const toggleFavorite = (cityId: number) => {
     setFavorites(prev => {
       let updated: number[];
@@ -122,11 +106,11 @@ export const WeatherPage: React.FC = () => {
       className="weather-page"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <h1 className="weather-page__title">Погода</h1>
+      <h1 className="weather-page__title">Weather</h1>
       <form onSubmit={handleSearch} className="weather-page__search-form">
         <input
           type="text"
-          placeholder="Введите название города"
+          placeholder="City name"
           value={query}
           onChange={e => setQuery(e.target.value)}
           className="weather-page__search-input"
@@ -142,7 +126,7 @@ export const WeatherPage: React.FC = () => {
 
       {favoriteCities.length > 0 && (
         <section className="weather-page__favorites">
-          <h2>Избранные города</h2>
+          <h2>Favoutite cities</h2>
           <div className="weather-page__cards">
             {favoriteCities.map(city => (
               <WeatherCard
@@ -157,10 +141,12 @@ export const WeatherPage: React.FC = () => {
       )}
 
       <section className="weather-page__all-cities">
-        <h2>Другие города</h2>
+        <h2>Other cities</h2>
         <div className="weather-page__cards">
           {otherCities.length === 0 && cities.length !== 0 && (
-            <div>Нет других городов</div>
+            <div>
+              <p>No other cities</p>
+            </div>
           )}
           {otherCities.map(city => (
             <WeatherCard

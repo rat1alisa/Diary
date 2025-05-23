@@ -3,6 +3,8 @@ $background_color: #ffffff;
 $background_color1: #f0e7d5;
 $font-family_2: "Montserrat", sans-serif;
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
 .weather-page {
   padding: 20px;
   width: 100vw;
@@ -32,7 +34,7 @@ $font-family_2: "Montserrat", sans-serif;
     background-size: inherit;
     background-position: inherit;
     background-repeat: inherit;
-    filter: blur(8px);
+    filter: blur(11px);
     z-index: -2;
   }
 
@@ -48,10 +50,16 @@ $font-family_2: "Montserrat", sans-serif;
   }
 
   &__title {
-    font-size: 2.5rem;
+    font-size: 7.5rem;
     margin-bottom: 20px;
     text-align: center;
     color: #2c3e50;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    display: block;
+    margin: 50px;
   }
 
   &__search-form {
@@ -60,26 +68,26 @@ $font-family_2: "Montserrat", sans-serif;
     flex-direction: row;
     margin-bottom: 30px;
     height: 150px;
-    background-color: none;
+    background: none;
 
     & > input {
       width: 250px;
-      padding: 10px 15px;
+      padding: 20px 20px;
       border: 2px solid #212842;
       border-right: none;
-      border-radius: 5px 0 0 5px;
-      font-size: 1rem;
+      border-radius: 40px 0 0 40px;
+      font-size: 1.5rem;
       outline: none;
     }
 
     & > button {
-      padding: 13px 15px;
+      padding: 20px 20px;
       background-color: #212842;
-      border: 2px solid #212842;
+      border: 3px solid #212842;
       color: rgb(255, 255, 255);
       font-weight: 600;
       font-size: 1rem;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 40px 40px 0;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
@@ -145,7 +153,7 @@ $font-family_2: "Montserrat", sans-serif;
   box-shadow: 0px 0px 37px 8px rgba(34, 60, 80, 0.2);
 
   &--favorite {
-    box-shadow: 0px 0px 10px 5px #d8a7a2;
+    box-shadow: 0px 0px 10px 5px #f2e3e3;
   }
 
   &__favorite-btn {
@@ -189,7 +197,7 @@ $font-family_2: "Montserrat", sans-serif;
     & > .weather-card__temp {
       font-size: 3.2rem;
       font-weight: 700;
-      color: #2980b9;
+      color: rgb(54, 54, 54);
       margin-top: 5px;
       font-family: $font-family_2;
     }

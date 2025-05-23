@@ -6,6 +6,7 @@ import { NotFoundPage } from '@pages/notFound/NotFoundPage';
 import { TimerPage } from '@pages/timer/ui/TimerPage';
 import { WeatherPage } from '@pages/WeatherPage/WeatherPage';
 import { createBrowserRouter } from 'react-router-dom';
+import { ProtectedRoute } from './protectedroutes';
 
 export const router = createBrowserRouter([
   {
@@ -13,27 +14,32 @@ export const router = createBrowserRouter([
     element: <App />, 
     children: [
       {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'clock',
-        element: <DigitalClock />,
-      },
-      {
-        path: 'timer',
-        element: <TimerPage />,
-      },
-      {
-        path: 'weather',
-        element: <WeatherPage />,
-      },{
-        path: '*',
-        element: <NotFoundPage />
+        element: <ProtectedRoute />, // Обёртка для защищённых маршрутов
+        children: [
+          {
+            index: true,
+            element: <HomePage />,
+          },
+          {
+            path: 'login',
+            element: <LoginPage />,
+          },
+          {
+            path: 'clock',
+            element: <DigitalClock />,
+          },
+          {
+            path: 'timer',
+            element: <TimerPage />,
+          },
+          {
+            path: 'weather',
+            element: <WeatherPage />,
+          },{
+            path: '*',
+            element: <NotFoundPage />
+          }
+        ],
       }
     ],
   },
