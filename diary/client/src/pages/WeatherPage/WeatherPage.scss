@@ -1,8 +1,215 @@
 $color_1: #101420;
+$background_color: #ffffff;
+$background_color1: #f0e7d5;
+$font-family_2: "Montserrat", sans-serif;
 
 .weather-page {
+  padding: 20px;
+  width: 100vw;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: $background_color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-position: inherit;
+    background-repeat: inherit;
+    filter: blur(8px);
+    z-index: -2;
+  }
+
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: -1;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  &__search-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 30px;
+    height: 150px;
+    background-color: none;
+
+    & > input {
+      width: 250px;
+      padding: 10px 15px;
+      border: 2px solid #212842;
+      border-right: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    & > button {
+      padding: 13px 15px;
+      background-color: #212842;
+      border: 2px solid #212842;
+      color: rgb(255, 255, 255);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:disabled {
+        background-color: #95a5a6;
+        border-color: #95a5a6;
+        cursor: default;
+      }
+
+      &:not(:disabled):hover {
+        background-color: #cf9898;
+        border-color: #212842;
+        color: #101420;
+      }
+    }
+  }
+
+  &__error {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__favorites,
+  &__all-cities {
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 1.8rem;
+      color: #34495e;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #212842;
+      padding-bottom: 5px;
+    }
+
+    & > .weather-page__cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+.weather-card {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 50px;
+  width: 250px;
+  //padding: 10px 30px 10px;
+  padding: 30px 20px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 0px 37px 8px rgba(34, 60, 80, 0.2);
+
+  &--favorite {
+    box-shadow: 0px 0px 10px 5px #d8a7a2;
+  }
+
+  &__favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #bbb;
+    transition: color 0.3s ease;
+
+    &.active {
+      color: #d9857c;
+    }
+
+    &:hover {
+      color: #d9857c;
+    }
+  }
+
+  &__city {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin: 0;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    & > .weather-card__temp {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #2980b9;
+      margin-top: 5px;
+      font-family: $font-family_2;
+    }
+  }
+
+  &__details {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.3;
+
+    & > div {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+/*.weather-page {
     padding: 20px;
     width: 100vw;
+    height: 100vh;
     margin: 0 auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
@@ -155,6 +362,5 @@ $color_1: #101420;
         margin-bottom: 5px;
       }
     }
-  }
-  
+  }*/
   

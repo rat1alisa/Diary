@@ -1,4 +1,45 @@
-import { RootState } from '@shared/store';
+interface WeatherData {
+  id: number;
+  name: string;
+  weather: { description: string; icon: string }[];
+  main: { temp: number; humidity: number };
+  wind: { speed: number };
+}
+
+interface WeatherCardProps {
+  data: WeatherData;
+  favorite: boolean;
+  onToggleFavorite: () => void;
+}
+
+export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onToggleFavorite }) => {
+  const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+
+  return (
+    <div className={`weather-card ${favorite ? 'weather-card--favorite' : ''}`}>
+      <button
+        onClick={onToggleFavorite}
+        className={`weather-card__favorite-btn ${favorite ? 'active' : ''}`}
+        aria-label={favorite ? 'Убрать из избранного' : 'Добавить в избранное'}
+      >
+        {favorite ? '❤️' : '🤍'}
+      </button>
+      <div className="weather-card__main-info">
+        <img src={iconUrl} alt={data.weather[0].description} />
+        <div className="weather-card__temp">{Math.round(data.main.temp)}°C</div>
+      </div>
+      <h3 className="weather-card__city">{data.name}</h3>
+      
+      {/*<div className="weather-card__details">
+        <div>Осадки: {data.weather[0].description}</div>
+        <div>Влажность: {data.main.humidity}%</div>
+        <div>Ветер: {data.wind.speed} м/с</div>
+      </div>*/}
+    </div>
+  );
+};
+
+/*import { RootState } from '@shared/store';
 import { toggleFavorite } from '@shared/store/favoritesSlice';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -76,4 +117,4 @@ export const WeatherInfo = ({ city }: WeatherInfoProps) => {
       <p>Влажность: {data.humidity}%</p>
     </div>
   );
-};
+};*/

@@ -64,7 +64,7 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <ThemeToggle />
+        {/*<ThemeToggle />*/}
       </div>
   );
 };
