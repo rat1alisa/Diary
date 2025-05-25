@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
 interface User {
   id?: number;
@@ -8,12 +9,19 @@ interface User {
 
 interface UserState {
   user: User | null;
-  isAuth: Boolean;
+  isAuthenticated: boolean;
 }
-//изначальное значение
+
+const getUserFromCookie = (): User | null => {
+  const cookie = Cookies.get('user');
+  return cookie ? JSON.parse(cookie) : null;
+};
+
+const initialUser = getUserFromCookie();
+
 const initialState: UserState = {
-  user: null,
-  isAuth: false
+  user: initialUser,
+  isAuthenticated: !!initialUser,
 };
 
 export const userSlice = createSlice({
@@ -22,9 +30,13 @@ export const userSlice = createSlice({
   reducers: {
     setUser(state, action: PayloadAction<User>) {
       state.user = action.payload;
+      state.isAuthenticated = true;
+      Cookies.set('user', JSON.stringify(action.payload), { expires: 7 }); // хранится 7 дней
     },
     logout(state) {
       state.user = null;
+      state.isAuthenticated = false;
+      Cookies.remove('user');
     },
   },
 });

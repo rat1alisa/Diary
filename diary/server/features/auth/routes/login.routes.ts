@@ -2,8 +2,8 @@ import { Router } from 'express';
 import { loginController } from '../controller/login.controller';
 
 
-const router = Router();
+const loginRouter = Router();
 
 // Маршрут для логина: POST /api/login
-router.post('/login', loginController);
-export { router as authRouter };
+loginRouter.post('/login', loginController);
+export { loginRouter as authRouter };

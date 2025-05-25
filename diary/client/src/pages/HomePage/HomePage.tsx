@@ -12,11 +12,11 @@ export const HomePage = () => {
         <main>
             <div className='main-container'>
             <h1>Home</h1>
-            {/*{user ? (
+            {user ? (
             <p>Привет, {user.name}!</p>
             ) : (
             <p>Вы не вошли в систему</p>
-            )}*/}
+            )}
              <BookApp />
             <Outlet />
             </div>

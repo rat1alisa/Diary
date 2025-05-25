@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-
 import reviewRoutes from '../entities/review/routes/review.routes';
 import { errorHandler } from '../shared/middleware/errorHandler';
 import { authRouter } from '../features/auth/routes/login.routes';
@@ -20,6 +19,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api', authRouter);
 app.use('/api/registration', registrationRoutes);
 app.use('/api/weather', weatherRouter);
+app.use('/api/login', authRouter );
 
 // Глобальная обработка ошибок
 app.use(errorHandler);

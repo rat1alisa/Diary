@@ -54,18 +54,29 @@ const BookApp: React.FC = () => {
           <ul className="book-list">
             {books.map(book => (
               <li key={book.id} onClick={() => onBookSelect(book)} className="book-item">
-                <img src={book.coverUrl} alt={book.title} width={50} />
-                <div>
-                  <b>{book.title}</b><br />
-                  Автор(ы): {book.authors.join(', ')}<br />
-                  Статус: {book.status}<br />
-                  Комментарий: {book.comments}
+                <div className="book">
+                  <div className="book-info">
+    
+                    Автор(ы): {book.authors.join(', ')}<br />
+                    Статус: {book.status}<br />
+                    Комментарий: {book.comments}
+                  </div>
+                  <div className="cover">
+                    <div className="cover-info">
+                      {/*<b>
+                        <b>{book.title}</b><br />
+            </b>*/}
+                      <img src={book.coverUrl} alt={book.title} />
+                    </div>
+                  </div>
                 </div>
               </li>
             ))}
           </ul>
         </>
       )}
+
+
       {editingBook && (
         <BookForm book={editingBook} onSave={onSaveBook} onCancel={() => setEditingBook(null)} />
       )}

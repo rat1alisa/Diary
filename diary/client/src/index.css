@@ -2,24 +2,28 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  font-family-pinterest: "Dancing Script", cursive;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  
   --bg-color: #ffffff;
-  --text-color: rgb(0, 0, 0);
+  --text-color: #000000;
 }
 
-html.dark {
-  --bg-color: #121212;
+.theme-dark {
+  --bg-color: #1c1c1c;
   --text-color: #f2f2f2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -29,22 +33,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  /*min-width: 320px;
-  min-height: 100vh;*/
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: all 0.3s ease;
-}
-
-.dark {
-  --bg-color: #121212;
-  --text-color: #f2f2f2;
 }
 
 h1 {

@@ -11,7 +11,7 @@ interface Props {
 const statusOptions = [
   { value: 'wantToRead', label: 'Хочу прочитать' },
   { value: 'reading', label: 'Читаю' },
-  { value: 'planned', label: 'Планирую прочитать' },
+  { value: 'read', label: 'Прочитано' },
 ];
 
 const BookForm: React.FC<Props> = ({ book, onSave, onCancel }) => {
