@@ -1,7 +1,18 @@
 $color_1: #101420;
+$color_white: #fff;
 $background_color: #ffffff;
 $background_color1: #f0e7d5;
 $font-family_2: "Montserrat", sans-serif;
+$color_b: #ffffff;
+$background-color_b: #1a1a1a;
+$border-color_b: #666666;
+$font-family_1: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$color_blush: #FDF1F5;
+$color_oldrose: #C08081;
+$color_mistyose: #FFE4F1;
+$color_vanilla: FOE7D5;
+$color_mocha: #92736C;
+
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
@@ -22,6 +33,7 @@ $font-family_2: "Montserrat", sans-serif;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/024/892/056/small_2x/vibrant-sunset-sky-over-idyllic-landscape-a-moody-backdrop-generated-by-ai-free-photo.jpg");
 
   &::before {
     content: '';
@@ -51,7 +63,6 @@ $font-family_2: "Montserrat", sans-serif;
 
   &__title {
     font-size: 7.5rem;
-    margin-bottom: 20px;
     text-align: center;
     color: #2c3e50;
     font-family: "Dancing Script", cursive;
@@ -59,7 +70,8 @@ $font-family_2: "Montserrat", sans-serif;
     font-weight: 700;
     font-style: normal;
     display: block;
-    margin: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
   }
 
   &__search-form {
@@ -78,12 +90,13 @@ $font-family_2: "Montserrat", sans-serif;
       border-radius: 40px 0 0 40px;
       font-size: 1.5rem;
       outline: none;
+      background-color: rgba(255,235,235,1);
     }
 
     & > button {
       padding: 20px 20px;
       background-color: #212842;
-      border: 3px solid #212842;
+      border: 5px solid #212842;
       color: rgb(255, 255, 255);
       font-weight: 600;
       font-size: 1rem;
@@ -91,16 +104,10 @@ $font-family_2: "Montserrat", sans-serif;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
-      &:disabled {
-        background-color: #95a5a6;
-        border-color: #95a5a6;
-        cursor: default;
-      }
-
       &:not(:disabled):hover {
-        background-color: #cf9898;
+        text-decoration: underline;
+        color: rgba(255,235,235,1);
         border-color: #212842;
-        color: #101420;
       }
     }
   }
@@ -143,7 +150,7 @@ $font-family_2: "Montserrat", sans-serif;
   display: flex;
   align-items: start;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: rgba(255, 241, 241, 0.9);
   border-radius: 50px;
   width: 250px;
   //padding: 10px 30px 10px;
@@ -153,7 +160,7 @@ $font-family_2: "Montserrat", sans-serif;
   box-shadow: 0px 0px 37px 8px rgba(34, 60, 80, 0.2);
 
   &--favorite {
-    box-shadow: 0px 0px 10px 5px #f2e3e3;
+    //box-shadow: 0px 0px 10px 5px rgba(255,235,235,1);
   }
 
   &__favorite-btn {
@@ -162,7 +169,7 @@ $font-family_2: "Montserrat", sans-serif;
     right: 10px;
     background: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     color: #bbb;
     transition: color 0.3s ease;
@@ -198,7 +205,7 @@ $font-family_2: "Montserrat", sans-serif;
       font-size: 3.2rem;
       font-weight: 700;
       color: rgb(54, 54, 54);
-      margin-top: 5px;
+      margin-top: 30px;
       font-family: $font-family_2;
     }
   }
@@ -213,6 +220,217 @@ $font-family_2: "Montserrat", sans-serif;
     }
   }
 }
+
+$color_1: #000;
+
+@keyframes flower1 {
+	0% {
+		transform: rotate(5deg);
+	}
+	100% {
+		transform: rotate(365deg);
+	}
+}
+@keyframes flower2 {
+	0% {
+		transform: rotate(35deg);
+	}
+	100% {
+		transform: rotate(-325deg);
+	}
+}
+@keyframes flower3 {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes flower4 {
+	0% {
+		transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(375deg);
+	}
+}
+@keyframes flower5 {
+	0% {
+		transform: rotate(25deg);
+	}
+	100% {
+		transform: rotate(-335deg);
+	}
+}
+@keyframes flower6 {
+	0% {
+		transform: rotate(30deg);
+	}
+	100% {
+		transform: rotate(390deg);
+	}
+}
+.btn {
+	height: 4em;
+	width: 12em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: 0px solid black;
+	cursor: pointer;
+	&:hover {
+		.petal {
+			background: linear-gradient($color_oldrose, $color_blush);
+	    border: 0.5px solid $color_mocha;
+		}
+		.flower {
+			grid-template-columns: 1.5em 1.5em;
+			.petal {
+				width: 1.5em;
+				height: 1.5em;
+			}
+		}
+		.text {
+			background: rgba(255, 255, 255, 0.4);
+		}
+		div.flower1 {
+			animation: 15s linear 0s normal none infinite running flower1;
+		}
+		div.flower2 {
+			animation: 13s linear 1s normal none infinite running flower2;
+		}
+		div.flower3 {
+			animation: 16s linear 1s normal none infinite running flower3;
+		}
+		div.flower4 {
+			animation: 17s linear 1s normal none infinite running flower4;
+		}
+		div.flower5 {
+			animation: 20s linear 1s normal none infinite running flower5;
+		}
+		div.flower6 {
+			animation: 15s linear 1s normal none infinite running flower6;
+		}
+	}
+}
+.wrapper {
+	height: 2em;
+	width: 8em;
+	position: relative;
+	background: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.text {
+	font-size: 17px;
+	z-index: 1;
+	color: $color_1;
+	padding: 4px 12px;
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.7);
+	transition: all 0.5s ease;
+}
+.flower {
+	display: grid;
+	grid-template-columns: 1em 1em;
+	position: absolute;
+	transition: grid-template-columns 0.8s ease;
+}
+.flower1 {
+	top: -12px;
+	left: -13px;
+	transform: rotate(5deg);
+}
+.flower2 {
+	bottom: -5px;
+	left: 8px;
+	transform: rotate(35deg);
+}
+.flower3 {
+	bottom: -15px;
+	transform: rotate(0deg);
+}
+.flower4 {
+	top: -14px;
+	transform: rotate(15deg);
+}
+.flower5 {
+	right: 11px;
+	top: -3px;
+	transform: rotate(25deg);
+}
+.flower6 {
+	right: -15px;
+	bottom: -15px;
+	transform: rotate(30deg);
+}
+.petal {
+	height: 1em;
+	width: 1em;
+	border-radius: 40% 70% / 7% 90%;
+	background: linear-gradient(#C08081, $color_blush);
+	border: 0.5px solid $color_mocha;
+	z-index: 0;
+	transition: width 0.8s ease, height 0.8s ease;
+}
+.two {
+	transform: rotate(90deg);
+}
+.three {
+	transform: rotate(270deg);
+}
+.four {
+	transform: rotate(180deg);
+}
+
+
+/*
+
+.weather-card__more__btn {
+	appearance: none;
+	background-color: $background-color_b;
+	border: 2px solid #1A1A1A;
+	border-radius: 15px;
+	box-sizing: border-box;
+	color: $color_white;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $font-family_1;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: normal;
+	margin: 0;
+	height: 45px;
+	width: 120px;
+	outline: none;
+	padding: 10px 14px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	will-change: transform;
+  margin-top: 10px;
+	&:disabled {
+		pointer-events: none;
+	}
+	&:hover {
+		color: $color_1;
+		background-color: white;
+		box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    border-color: #1A1A1A;
+	}
+	&:active {
+		box-shadow: none;
+		transform: translateY(0);
+	}
+}
+
+
 
 /*.weather-page {
     padding: 20px;
@@ -303,6 +521,7 @@ $font-family_2: "Montserrat", sans-serif;
     }
   }
   
+
   .weather-card {
     background-color: #000000;
     border-radius: 10px;

@@ -4,15 +4,20 @@ interface WeatherData {
   weather: { description: string; icon: string }[];
   main: { temp: number; humidity: number };
   wind: { speed: number };
+  clouds: { all: number };
+  rain?: { '1h'?: number; '3h'?: number };
+  snow?: { '1h'?: number; '3h'?: number };
+
 }
 
 interface WeatherCardProps {
   data: WeatherData;
   favorite: boolean;
   onToggleFavorite: () => void;
+  onShowDetails: (cityId: number) => void;
 }
 
-export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onToggleFavorite }) => {
+export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onToggleFavorite, onShowDetails}) => {
   const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
   return (
@@ -22,10 +27,10 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onTogg
         className={`weather-card__favorite-btn ${favorite ? 'active' : ''}`}
         aria-label={favorite ? 'Убрать из избранного' : 'Добавить в избранное'}
       >
-        {favorite ? '❤️' : '🤍'}
+        {favorite ? '💗ྀིྀི' : '🤍ྀི'}
       </button>
       <div className="weather-card__main-info">
-        <img src={iconUrl} alt={data.weather[0].description} />
+        {/*<img src={iconUrl} alt={data.weather[0].description} />*/}
         <div className="weather-card__temp">{Math.round(data.main.temp)}°C</div>
       </div>
       <h3 className="weather-card__city">{data.name}</h3>
@@ -35,11 +40,66 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onTogg
         <div>Влажность: {data.main.humidity}%</div>
         <div>Ветер: {data.wind.speed} м/с</div>
       </div>*/}
+
+      <button 
+        className="btn"
+        onClick={() => onShowDetails(data.id)}
+      >
+        <div className="wrapper">
+          <p className="text">More</p>
+          <div className="flower flower1">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+          <div className="flower flower2">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+          <div className="flower flower3">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+          <div className="flower flower4">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+          <div className="flower flower5">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+          <div className="flower flower6">
+            <div className="petal one" />
+            <div className="petal two" />
+            <div className="petal three" />
+            <div className="petal four" />
+          </div>
+        </div>
+      </button>
+      
+
     </div>
   );
 };
 
-/*import { RootState } from '@shared/store';
+/*
+<button 
+        className="weather-card__more__btn"
+        onClick={() => onShowDetails(data.id)}
+      >
+          more
+      </button>
+
+import { RootState } from '@shared/store';
 import { toggleFavorite } from '@shared/store/favoritesSlice';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

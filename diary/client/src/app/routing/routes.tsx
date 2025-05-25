@@ -6,16 +6,13 @@ import { NotFoundPage } from '@pages/notFound/NotFoundPage';
 import { TimerPage } from '@pages/timer/ui/TimerPage';
 import { WeatherPage } from '@pages/WeatherPage/WeatherPage';
 import { createBrowserRouter } from 'react-router-dom';
-import { ProtectedRoute } from './protectedroutes';
+//import { ProtectedRoute } from './protectedroutes';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />, 
     children: [
-      {
-        element: <ProtectedRoute />, // Обёртка для защищённых маршрутов
-        children: [
           {
             index: true,
             element: <HomePage />,
@@ -42,5 +39,4 @@ export const router = createBrowserRouter([
         ],
       }
     ],
-  },
-]);
+);

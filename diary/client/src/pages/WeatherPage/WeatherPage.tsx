@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './WeatherPage.scss';
 import { WeatherCard } from '@features/weather/weatherInfo';
+import { WeatherDetailsModal } from '@features/weather/WeatherDetailsModal';
 
 interface WeatherData {
   id: number;
@@ -20,6 +21,8 @@ const morningImg = 'https://img.freepik.com/premium-photo/abstract-background-sk
 export const WeatherPage: React.FC = () => {
   const [query, setQuery] = useState('');
   const [cities, setCities] = useState<WeatherData[]>([]);
+  const [selectedCityData, setSelectedCityData] = useState<WeatherData | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const [favorites, setFavorites] = useState<number[]>(() => {
     // Считываем избранные из localStorage
     const saved = localStorage.getItem('weather-favorites');
@@ -84,6 +87,30 @@ export const WeatherPage: React.FC = () => {
     setQuery('');
   };
 
+  const handleShowDetails = async (cityId: number) => {
+    try {
+      const city = cities.find(c => c.id === cityId);
+      if (!city) return;
+
+      // Для детальной информации снова запрашиваем с доп данными
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${API_KEY}&units=metric&lang=ru`,
+      );
+      if (!res.ok) throw new Error('Ошибка получения детальной информации');
+      const data: WeatherData = await res.json();
+
+      setSelectedCityData(data);
+      setModalOpen(true);
+    } catch (err: any) {
+      setError(err.message || 'Ошибка загрузки детальной информации');
+    }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedCityData(null);
+  };
+
   const toggleFavorite = (cityId: number) => {
     setFavorites(prev => {
       let updated: number[];
@@ -104,7 +131,7 @@ export const WeatherPage: React.FC = () => {
   return (
     <div 
       className="weather-page"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      //style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <h1 className="weather-page__title">Weather</h1>
       <form onSubmit={handleSearch} className="weather-page__search-form">
@@ -134,9 +161,15 @@ export const WeatherPage: React.FC = () => {
                 data={city}
                 favorite={true}
                 onToggleFavorite={() => toggleFavorite(city.id)}
+                onShowDetails={handleShowDetails}
               />
             ))}
           </div>
+
+          {modalOpen && selectedCityData && (
+        <WeatherDetailsModal data={selectedCityData} onClose={closeModal} />
+        )}
+
         </section>
       )}
 
@@ -154,6 +187,7 @@ export const WeatherPage: React.FC = () => {
               data={city}
               favorite={false}
               onToggleFavorite={() => toggleFavorite(city.id)}
+              onShowDetails={handleShowDetails}
             />
           ))}
         </div>

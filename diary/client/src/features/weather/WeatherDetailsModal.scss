@@ -1,3 +1,10 @@
+$color_blush: #FDF1F5;
+$color_oldrose: #C08081;
+$color_mistyose: #FFE4F1;
+$color_vanilla: FOE7D5;
+$color_mocha: #92736C;
+
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -12,17 +19,27 @@
   }
   
   .modal-content {
-    background: white;
+    //background-color: #eecadc;
+    //background-color: #f2bdbd;
+    background-color: white;
     border-radius: 12px;
     padding: 20px;
-    max-width: 600px;
+    max-width: 70vw;
     width: 90%;
     position: relative;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow-y: auto;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  }
 
+    .modal-name{
+      font-size: 1.8rem;
+      color: #34495e;
+      margin: 0; 
+      padding: 0;
+      border:none;
+    }
+  }
+  
 .modal-close {
   position: absolute;
   top: 12px;
@@ -32,20 +49,15 @@
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
-}
-
-.modal-title {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 2rem;
+  color: black;
 }
 
 .modal-main-info {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   margin-bottom: 20px;
+  flex-direction: column;
 
   img {
     width: 96px;
@@ -53,40 +65,54 @@
   }
 
   .modal-temp {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 0;
+    color: #1f2d3b;
   }
 
   .modal-desc {
     font-size: 1rem;
     color: #666;
+    margin: 0;
   }
 }
 
 .modal-widgets {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 28px;
   justify-content: center;
 
   .widget {
-    flex: 1 1 120px;
-    background: #f4f7fa;
-    border-radius: 12px;
+    //flex: 1 1 120px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    background: rgba(255,235,235,0.5);
+    border-radius: 20px;
+    width: 135px;
+    height: 135px;
     padding: 15px;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     text-align: center;
 
     h4 {
-      margin-bottom: 8px;
+      margin-bottom: 25px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      margin-top: 0;
+      text-align: start;
+      color: #ce999a;
     }
 
     p {
       margin: 0;
-      font-size: 1.25rem;
+      font-size: 30px;
       font-weight: 700;
+      color: #34495e;
     }
   }
 }
+

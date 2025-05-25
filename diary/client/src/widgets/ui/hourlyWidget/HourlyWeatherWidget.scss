@@ -1,0 +1,49 @@
+.hourly-weather-widget {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem;
+    background: #eef6fb;
+    border-radius: 8px;
+  
+    .hours-row {
+      display: flex;
+      gap: 12px;
+    }
+  
+    .hour-cell {
+      min-width: 60px;
+      text-align: center;
+      font-family: monospace;
+      background: white;
+      border-radius: 6px;
+      padding: 0.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+  
+      .hour {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+  
+      .temp {
+        margin-top: 0.2rem;
+        font-size: 1.1rem;
+      }
+  
+      .sun-event {
+        font-size: 0.75rem;
+        margin-top: 0.4rem;
+        white-space: normal;
+        line-height: 1.1;
+  
+        &.sun-event--sunrise {
+          color: #f39c12;
+        }
+  
+        &.sun-event--sunset {
+          color: #d35400;
+        }
+      }
+    }
+  }
+  
