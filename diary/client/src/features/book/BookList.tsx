@@ -1,4 +1,4 @@
-import { Book } from "./types";
+import { Book } from "@entities/book/model/types";
 
 interface BooksListProps {
     books: Book[];

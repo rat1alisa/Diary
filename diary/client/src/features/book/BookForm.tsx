@@ -1,5 +1,5 @@
+import { Book } from '@entities/book/model/types';
 import React, { useState } from 'react';
-import { Book } from './types';
 
 
 interface Props {

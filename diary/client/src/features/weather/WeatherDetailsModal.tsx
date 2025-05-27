@@ -11,42 +11,22 @@ interface WeatherDetailsProps {
     rain?: { '1h'?: number; '3h'?: number };
     snow?: { '1h'?: number; '3h'?: number };
     clouds: { all: number };
-    sys: { sunrise: number; sunset: number };  // Время в UNIX UTC
     uvi: number;                               // УФ-индекс
-    moonrise: number;                          // лунный восход (UNIX UTC)
-    moonset: number;                           // лунный заход (UNIX UTC)
   } | null;
   onClose: () => void;
 }
 
-
-interface OneCallData {
-  current: {
-    sunrise: number;
-    sunset: number;
-    uvi: number;
-  };
-  daily: {
-    moonrise: number;
-    moonset: number;
-    moon_phase: number;
-  }[];
-}
-
-// Преобразование unix timestamp (в секундах) в локальное время «часы:минуты»
 const formatTime = (unixUtcSeconds: number) => {
   const date = new Date(unixUtcSeconds * 1000);
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
 
-// Получение направления ветра из градусов в краткое обозначение:
 const getWindDirection = (deg: number) => {
   const directions = ['С', 'ССВ', 'СВ', 'ВСВ', 'В', 'ВЮВ', 'ЮВ', 'ЮЮВ', 'Ю', 'ЮЮЗ', 'ЮЗ', 'ЗЮЗ', 'З', 'ЗСЗ', 'СЗ', 'ССЗ'];
   const index = Math.round(deg / 22.5) % 16;
   return directions[index];
 };
 
-// Пояснение УФ-индекса
 const getUviDescription = (uvi: number): string => {
   if (uvi <= 2) return 'Низкий';
   if (uvi <= 5) return 'Умеренный';
@@ -61,12 +41,10 @@ export const WeatherDetailsModal: React.FC<WeatherDetailsProps> = ({ data, onClo
 
   const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
   const API_KEY = '1d7cd15d062ae243657b965928090c2b';
-
+  
+  const [sunrise, setSunrise] = useState<number | null>(null);
+  const [sunset, setSunset] = useState<number | null>(null);
   const precipitation = data.rain?.['1h'] ?? data.rain?.['3h'] ?? data.snow?.['1h'] ?? data.snow?.['3h'] ?? 0;
-  const sunriseTime = formatTime(data.sys.sunrise);
-  const sunsetTime = formatTime(data.sys.sunset);
-  const moonriseTime = formatTime(data.moonrise);
-  const moonsetTime = formatTime(data.moonset);
   const windDirection = getWindDirection(data.wind.deg);
   const uviDescription = getUviDescription(data.uvi);
 
@@ -84,6 +62,7 @@ export const WeatherDetailsModal: React.FC<WeatherDetailsProps> = ({ data, onClo
         </div>
 
         <div className="modal-widgets">
+
           <div className="widget rounded">
             <h4>Влажность</h4>
             <p>{data.main.humidity}%</p>
@@ -115,6 +94,7 @@ export const WeatherDetailsModal: React.FC<WeatherDetailsProps> = ({ data, onClo
           <div className="widget rounded">
             <h4>УФ-индекс</h4>
             <p style={{fontSize: '1rem'}}>{uviDescription}</p>
+            <h4>Останентся до конца дня</h4>
           </div>
 
         </div>

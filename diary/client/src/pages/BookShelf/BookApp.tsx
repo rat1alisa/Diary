@@ -1,6 +1,7 @@
+import { Book } from '@entities/book/model/types';
 import BookForm from '@features/book/BookForm';
 import BookSearch from '@features/book/BookSearch';
-import { Book } from '@features/book/types';
+
 import React, { useState, useEffect } from 'react';
 import "./BookApp.scss"
 
@@ -59,7 +60,6 @@ const BookApp: React.FC = () => {
               <li key={book.id} onClick={() => onBookSelect(book)} className="book-item">
                 <div className="book">
                   <div className="book-info">
-    
                     Автор(ы): {book.authors.join(', ')}<br />
                     Статус: {book.status}<br />
                     Комментарий: {book.comments}
@@ -68,7 +68,7 @@ const BookApp: React.FC = () => {
                     <div className="cover-info">
                       {/*<b>
                         <b>{book.title}</b><br />
-            </b>*/}
+                      </b>*/}
                       <img src={book.coverUrl} alt={book.title} />
                     </div>
                   </div>

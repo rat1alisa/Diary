@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@shared/store/userSlice';
+import Cookies from 'js-cookie'; // добавили библиотеку cookies
 
-//схема валидации
+// Схема валидации
 const loginSchema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(5, 'Password must be at least 6 characters'),
@@ -17,7 +18,6 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm = () => {
-  
   const {
     register,
     handleSubmit,
@@ -27,8 +27,8 @@ export const LoginForm = () => {
   });
 
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
@@ -39,7 +39,6 @@ export const LoginForm = () => {
         body: JSON.stringify(data),
       });
 
-      // const resData = await res.json();
       let resData;
       try {
         resData = await res.json();
@@ -48,16 +47,27 @@ export const LoginForm = () => {
         resData = { message: 'Server returned invalid response' };
       }
 
-
-      if (!res.ok) {
+      if (res.ok) {
+        Cookies.set('user', JSON.stringify({ id: 1, name: 'Test User' }), { expires: 7 });
+        alert('Cookie set');
+      } else {
         alert(resData.message || 'Login failed');
         return;
       }
 
-      // Храни токен при необходимости (resData.token)
-      alert(resData.message);
-      dispatch(setUser({ id: resData.id, name: resData.name, email: resData.email }));       
-      
+      //Сохраняем токен в cookie
+      if (resData.token) {
+        Cookies.set('token', resData.token, { expires: 7 });
+      }
+
+      //Сохраняем пользователя в redux store и cookies
+      dispatch(setUser({
+        id: resData.id,
+        name: resData.name,
+        email: resData.email,
+      }));
+
+      alert(resData.message || 'Login successful');
       navigate('/');
     } catch (err) {
       console.error('Login failed:', err);
@@ -77,69 +87,19 @@ export const LoginForm = () => {
           placeholder='email'
         />
         {errors.email && <p className='errorMas'>{errors.email.message}</p>}
+
         <b>Password</b>
         <Input
           type="password"
           {...register('password')}
-          className="CLASS__NAME"
           placeholder='password'
         />
         {errors.password && <p className='errorMas'>{errors.password.message}</p>}
 
-      <Button type="submit" disabled={loading}>
-        {loading ? 'Logging in...' : 'Login'}
-      </Button>
+        <Button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </Button>
       </div>
     </form>
   );
 };
-
-
-/* 
-
-const loginSchema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-});
-
-type LoginFormValues = z.infer<typeof loginSchema>;
-
-
-const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
-  });
-
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
-
-  const onSubmit = async (data: LoginFormValues) => {
-    try {
-      setLoading(true);
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const resData = await res.json();
-      if (res.ok) {
-        dispatch(setUser(resData.user)); //сохраняем пользователя в store
-        navigate('/');
-      }
-
-      // Храни токен при необходимости (resData.token)
-      alert(resData.message);
-      navigate('/');
-    } catch (err) {
-      console.error('Login failed:', err);
-      alert('Something went wrong!');
-    } finally {
-      setLoading(false);
-    }
-  };
-*/
