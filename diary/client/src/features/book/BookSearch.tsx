@@ -3,8 +3,8 @@ import { Book } from './types';
 
 
 interface GoogleBookApiItem {
-  id: string;
-  volumeInfo: {
+    id: string;
+    volumeInfo: {
     title: string;
     authors?: string[];
     description?: string;
@@ -58,14 +58,16 @@ const BookSearch: React.FC<Props> = ({ onSelect }) => {
   };
 
   return (
-    <div>
+    <div className='book-search'>
       <input
         value={query}
         onChange={e => setQuery(e.target.value)}
         placeholder="Введите название книги"
+        className='input'
       />
-      <button onClick={searchBooks} disabled={loading}>{loading ? 'Поиск...' : 'Поиск'}</button>
-
+      <button className="search-button" onClick={searchBooks}>
+      </button>
+{/*disabled={loading}>{loading ? 'Поиск...' : 'Поиск'} */}
       <ul>
         {results.map(item => (
           <li key={item.id} onClick={() => onBookClick(item)} style={{ cursor: 'pointer' }}>
@@ -78,3 +80,4 @@ const BookSearch: React.FC<Props> = ({ onSelect }) => {
 };
 
 export default BookSearch;
+

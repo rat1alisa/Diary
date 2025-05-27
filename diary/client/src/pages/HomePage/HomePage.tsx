@@ -11,13 +11,13 @@ export const HomePage = () => {
     <div>
         <main>
             <div className='main-container'>
-            <h1>Home</h1>
+             {/*<h1>Home</h1>
             {user ? (
             <p>Привет, {user.name}!</p>
             ) : (
             <p>Вы не вошли в систему</p>
-            )}
-             <BookApp />
+            )}*/}
+            <BookApp />
             <Outlet />
             </div>
         </main>

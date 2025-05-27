@@ -1,17 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
 .book-app {
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 1rem;
   font-family: Arial, sans-serif;
-  color: #333;
+  background-color: #dab8b4;
+  padding: 10px;
+  padding-top: 70px;
 
-  h2 {
+  h1 {
     text-align: center;
-    margin-bottom: 1rem;
-    color: #2a8bf2;
+    margin-bottom: 70px;
+    color:#5c433e;
+    font-family: "Dancing Script", cursive;
+    font-size: 5.8rem;
+    font-weight: 700;
+    text-align: center;
   }
 
+  .book-shelf {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    h2{
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+  }
   .book-list {
     list-style: none;
     padding: 0;
@@ -105,40 +124,47 @@
 }
 
 .book-search {
-  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 5px;
+  gap: 10px;
+  align-items: center;
 
-  input[type="text"] {
-    width: calc(100% - 110px);
-    padding: 0.5rem 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px 0 0 6px;
+  .input {
+    width: 100%;
+    max-width: 250px;
+    height: 30px;
+    padding: 12px;
+    border-radius: 15px;
+    border: 1.5px solid lightgrey;
     outline: none;
-
-    &:focus {
-      border-color: #2a8bf2;
-      box-shadow: 0 0 5px rgba(42,139,242,0.5);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 0px 0px 20px -18px;
+    &:hover {
+      border: 2px solid lightgrey;
+      box-shadow: 0px 0px 20px -17px;
     }
+    &:active {
+      transform: scale(0.95);
+    }
+    &:focus {
+      border: 2px solid grey;
+    }
+  }  
+
+  .search-button{
+    display: block;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-image: url("https://icon-library.com/images/white-search-icon-transparent-background/white-search-icon-transparent-background-1.jpg");
+    background-size: cover;
+    background-color: black;
   }
 
-  button {
-    width: 100px;
-    border: none;
-    background-color: #2a8bf2;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0 6px 6px 0;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-
-    &:hover:not(:disabled) {
-      background-color: #1d60cb;
-    }
-    &:disabled {
-      background-color: #aac5f7;
-      cursor: not-allowed;
-    }
+  .svg{
+    font-size: 10px;
   }
 
   ul {

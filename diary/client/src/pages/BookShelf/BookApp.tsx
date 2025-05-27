@@ -43,9 +43,12 @@ const BookApp: React.FC = () => {
     });
     setEditingBook(null);
   };
-
+  
   return (
     <div className="book-app">
+      <h1>My personal library</h1>
+
+      <div className='book-shelf'>
       <h2>Моя книжная полка</h2>
       {!editingBook && (
         <>
@@ -75,7 +78,7 @@ const BookApp: React.FC = () => {
           </ul>
         </>
       )}
-
+      </div>
 
       {editingBook && (
         <BookForm book={editingBook} onSave={onSaveBook} onCancel={() => setEditingBook(null)} />
@@ -85,6 +88,7 @@ const BookApp: React.FC = () => {
 };
 
 export default BookApp;
+
 
 
 /*
