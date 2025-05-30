@@ -1,0 +1,84 @@
+.stats-book-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  
+    .progress-block {
+      flex: 1 1 180px;
+      background: #f9fafc;
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 2px 10px #f0eaea6c;
+      ul {
+        padding-left: 18px;
+        li {
+          margin-bottom: 7px;
+          font-size: 1.06em;
+        }
+        b { color: #7669f7; }
+      }
+      h3 {
+        margin-top: 0;
+        color: #438cfc;
+        font-weight: 700;
+      }
+    }
+  
+    .bookmonth-block {
+      flex: 2 1 340px;
+      background: #fcf5ec;
+      border-radius: 12px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 10px #edd3c75e;
+      h3 {
+        margin-top: 0;
+        color: #f7b045;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .bookmonth-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        img {
+          max-width: 90px;
+          border-radius: 7px;
+          box-shadow: 0 3px 8px #cfbcc21c;
+        }
+        > div {
+          min-width: 0;
+        }
+        .bookmonth-title {
+          font-size: 1.1em;
+          font-weight: 700;
+          color: #555;
+        }
+        .bookmonth-author {
+          color: #8a7364;
+          margin-bottom: 7px;
+        }
+        .bookmonth-desc {
+          font-size: 0.95em;
+          color: #83796e;
+          margin-bottom: 10px;
+        }
+        .bookmonth-btn {
+          background: #ffd98a;
+          color: #614c0e;
+          border: none;
+          border-radius: 5px;
+          padding: 5px 17px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 0.96em;
+          &:hover {
+            background: #f7b045;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  

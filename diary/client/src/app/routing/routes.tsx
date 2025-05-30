@@ -6,7 +6,6 @@ import { NotFoundPage } from '@pages/notFound/NotFoundPage';
 import { TimerPage } from '@pages/timer/ui/TimerPage';
 import { WeatherPage } from '@pages/WeatherPage/WeatherPage';
 import { createBrowserRouter } from 'react-router-dom';
-//import { ProtectedRoute } from './protectedroutes';
 
 export const router = createBrowserRouter([
   {
@@ -22,11 +21,11 @@ export const router = createBrowserRouter([
             element: <LoginPage />,
           },
           {
-            path: 'clock',
+            path: 'timer',
             element: <DigitalClock />,
           },
           {
-            path: 'timer',
+            path: 'clock',
             element: <TimerPage />,
           },
           {
@@ -40,3 +39,50 @@ export const router = createBrowserRouter([
       }
     ],
 );
+
+/*import { LoginPage } from '@pages/login/ui/LoginPage';
+import { HomePage } from '@pages/HomePage/HomePage';
+import { NotFoundPage } from '@pages/notFound/NotFoundPage';
+import { TimerPage } from '@pages/timer/ui/TimerPage';
+import { WeatherPage } from '@pages/WeatherPage/WeatherPage';
+import { createBrowserRouter } from 'react-router-dom';
+import { WelcomePage } from '@pages/welcome/WelcomePage';
+import { MainLayout } from '@app/MainLayout';
+import FlipClock from '@pages/clock/ui/ClockPage';
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <WelcomePage />, 
+  },
+  {
+    path: '/login',
+    element: <LoginPage />, 
+  },
+  {
+    path: '/',
+    element: <MainLayout />, 
+    children: [
+      {
+        path: 'home',
+        element: <HomePage />,
+      },
+      {
+        path: 'clock',
+        element: <FlipClock />,
+      },
+      {
+        path: 'timer',
+        element: <TimerPage />,
+      },
+      {
+        path: 'weather',
+        element: <WeatherPage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
+  },
+]);*/

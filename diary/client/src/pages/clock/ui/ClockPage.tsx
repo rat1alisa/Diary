@@ -1,165 +1,127 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ClockPage.scss';
 
-interface CountdownTrackerProps {
-  label: string;
-  value: number;
-}
+const COFFEE_IMG = 'https://png.pngtree.com/png-clipart/20230131/ourmid/pngtree-coffee-aroma-png-image_6195642.png';
+const MATCHA_IMG = 'https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-cup-of-matcha-latte-png-image_10275148.png';
 
-const pad = (num: number): string => (num < 10 ? '0' + num : num.toString());
+const FlipClock: React.FC = () => {
+  const [inputMinutes, setInputMinutes] = useState('0');
+  const [inputSeconds, setInputSeconds] = useState('0');
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [theme, setTheme] = useState<'pink' | 'green'>('pink');
 
-const CountdownTracker: React.FC<CountdownTrackerProps> = ({ label, value }) => {
-  const [currentValue, setCurrentValue] = useState(pad(value));
-  const [previousValue, setPreviousValue] = useState(pad(value));
-  const [flipping, setFlipping] = useState(false);
-  const rootRef = useRef<HTMLSpanElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
 
   useEffect(() => {
-    const newValue = pad(value);
-    if (newValue !== currentValue) {
-      setPreviousValue(currentValue);
-      setCurrentValue(newValue);
-      setFlipping(true);
-      const timeout = setTimeout(() => setFlipping(false), 600); // длительность анимации, мс
-      
-      return () => clearTimeout(timeout);
+    if (isRunning && timeLeft > 0) {
+      intervalRef.current = setInterval(() => {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+            clearInterval(intervalRef.current!);
+            setIsRunning(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
     }
-  }, [value, currentValue]);
-
-  return (
-    <span className="flip-clock__piece" ref={rootRef}>
-      <b className={`flip-clock__card card ${flipping ? 'flip' : ''}`} >
-        <b className="card__top" data-value={previousValue}>{previousValue}</b>
-        <b className="card__bottom" data-value={previousValue}>{previousValue}</b>
-        <b className="card__back">
-          <b className="card__bottom" data-value={currentValue}>{currentValue}</b>
-        </b>
-      </b>
-      <span className="flip-clock__slot">{label}</span>
-    </span>
-  );
-};
-
-interface ClockProps {
-  countdown?: string | Date;
-  onComplete?: () => void;
-}
-
-interface TimeData {
-  [key: string]: number | Date;
-}
-
-const getTimeRemaining = (endtime: Date): Record<string, number> => {
-  const t = endtime.getTime() - new Date().getTime();
-  return {
-    Total: t,
-    Days: Math.floor(t / (1000 * 60 * 60 * 24)),
-    Hours: Math.floor((t / (1000 * 60 * 60)) % 24),
-    Minutes: Math.floor((t / 1000 / 60) % 60),
-    Seconds: Math.floor((t / 1000) % 60),
-  };
-};
-
-const getTime = (): Record<string, number | Date> => {
-  const now = new Date();
-  return {
-    Total: now,
-    Hours: now.getHours(),
-    Minutes: now.getMinutes(),
-    Seconds: now.getSeconds(),
-  };
-};
-
-const FlipClock: React.FC<ClockProps> = ({ countdown, onComplete }) => {
-  // timer state
-  const [time, setTime] = useState<Record<string, number>>(countdown ? getTimeRemaining(new Date(countdown)) : getTime() as any);
-
-  useEffect(() => {
-    let animationFrameId: number;
-    let tickCount = 0;
-
-    const updateTime = () => {
-      animationFrameId = requestAnimationFrame(updateTime);
-
-      // throttle: обновлять каждую 10-ю итерацию (~6 раз в секунду)
-      tickCount++;
-      if (tickCount % 10 !== 0) return;
-
-      let t: Record<string, number>;
-      if (countdown) {
-        t = getTimeRemaining(new Date(countdown));
-        if (t.Total < 0) {
-          cancelAnimationFrame(animationFrameId);
-          if (onComplete) onComplete();
-          Object.keys(t).forEach(key => (t[key] = 0));
-          setTime(t);
-          return;
-        }
-      } else {
-        t = getTime() as any;
-      }
-      setTime(t);
-    };
-
-    const timerId = setTimeout(() => {
-      updateTime();
-    }, 500);
-
+    //чтобы избежать утечки памяти
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      clearTimeout(timerId);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [countdown, onComplete]);
+  }, [isRunning]);
+
+  const handleFocusClick = () => {
+    const totalSeconds = Number(inputMinutes) * 60 + Number(inputSeconds);
+    if (totalSeconds > 0) {
+      setTimeLeft(totalSeconds);
+      setIsRunning(true);
+    }
+  };
+
+  const handleQuitClick = () => {
+    setIsRunning(false);
+    setTimeLeft(0);
+    setInputMinutes('0');
+    setInputSeconds('0');
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  const onMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (/^\d*$/.test(val)) setInputMinutes(val);
+  };
+
+  const onSecondsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (/^\d*$/.test(val)) {
+      if (val === '' || Number(val) <= 59) {
+        setInputSeconds(val);
+      }
+    }
+  };
+
+  const handleThemeSwitch = () => {
+    setTheme(prev => (prev === 'pink' ? 'green' : 'pink'));
+  };
 
   return (
-    <div className="flip-clock"> 
-        <>
-          <CountdownTracker label="Часы" value={time.Hours as number} />
-          <CountdownTracker label="Минуты" value={time.Minutes as number} />
-          <CountdownTracker label="Секунды" value={time.Seconds as number} />
-        </>x
+    <div className='timer'>
+      <div className={`timer-page ${theme}`}>
+        <div className="timer-photo">
+          <img 
+            alt={theme === 'pink' ? 'coffee' : 'matcha'}
+            src={theme === 'pink' ? COFFEE_IMG : MATCHA_IMG}
+            draggable={false}
+          />
+        </div>
+
+        <div className="timer-container">
+          <p>DO NOT DISTRUB</p>
+          <div className="time-display">{formatTime(timeLeft)}</div>
+
+          {!isRunning && (
+            <div className="input-section">
+              <input
+                type="text"
+                value={inputMinutes}
+                onChange={onMinutesChange}
+                maxLength={3}
+                aria-label="Минуты"
+              />
+              <span> : </span>
+              <input
+                type="text"
+                value={inputSeconds}
+                onChange={onSecondsChange}
+                maxLength={2}
+                aria-label="Секунды"
+              />
+            </div>
+          )}
+
+          {!isRunning ? (
+            <button className="focus-btn" onClick={handleFocusClick}>Focus</button>
+          ) : (
+            <button className="focus-btn" onClick={handleQuitClick}>Quit</button>
+          )}
+        </div>
+      </div>
+
+      <button
+        className={`theme-switch-btn ${theme}`}
+        onClick={handleThemeSwitch}
+        title="Переключить тему"
+      />
     </div>
   );
 };
 
 export default FlipClock;
-/*import React, { useEffect, useState } from 'react';
-import './ClockPage.scss';
-
-const DigitalClock: React.FC = () => {
-    const [time, setTime] = useState<string>('00:00');
-    const [date, setDate] = useState<string>('');
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            setTime(`${hours}${minutes}`);
-
-            const day = now.getDate();
-            const month = now.toLocaleString('default', { month: 'long' });
-            setDate(`${day} ${month}`);
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <div>
-            <div className="clock-container">
-                <div className="clock">
-                    {time.split('').map((digit, index) => (
-                        <div key={index} className="digit">
-                            <b>{digit}</b>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default DigitalClock;
-
-//<div className="date">{date}</div>*/

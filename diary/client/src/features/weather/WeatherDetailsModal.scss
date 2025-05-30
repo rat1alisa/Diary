@@ -24,8 +24,9 @@ $color_mocha: #92736C;
     background-color: white;
     border-radius: 12px;
     padding: 20px;
-    max-width: 70vw;
-    width: 90%;
+    //max-width: 70vw;
+    //width: 90%;
+    width: 900px;
     position: relative;
     max-height: 80vh;
     overflow-y: auto;
@@ -116,3 +117,28 @@ $color_mocha: #92736C;
   }
 }
 
+.widget:hover{
+  box-shadow: 0px 0px 10px 5px rgba(255,235,235,1);
+  transition: 0.5s ease-in-out;
+}
+.precipitation-map-widget {
+  max-width: 250px;
+  user-select: none;
+
+  img {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  h4 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #444;
+  }
+}

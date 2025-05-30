@@ -1,4 +1,189 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One|Roboto+Mono:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap');
+
+$color-pink-bg: #d8b8bb;
+$color-pink-btn: #fdcdd1;
+$color-pink-num: #ff69b4;
+$color-green-bg: #e2f7da;
+$color-green-btn: #bfd4c1;
+$color-green-num: #497255;
+
+.timer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+.timer-page {
+  background: $color-pink-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95vw;
+  height: 90vh;
+  flex-direction: row;
+  gap: 20px;
+
+  &.green {
+    background: $color-green-bg;
+  }
+}
+
+.timer-container {
+  border-radius: 12px;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //gap: 24px;
+  box-sizing: border-box;
+  user-select: none;
+
+  p{
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 60px;
+    margin: 0;
+    color :white;
+    text-shadow: 2px 2px 3px #5c433e;
+  }
+}
+
+.time-display {
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 280px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 160px;
+  letter-spacing: 0.4rem;
+}
+.timer-page.green .time-display {
+  color: $color-green-num;
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input {
+    width: 60px;
+    padding: 8px;
+    font-size: 30px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+    font-family: "Playfair Display", serif;
+    background-color: white;
+  }
+
+  span {
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}
+
+.timer-page.green .input-section span {
+  color: $color-green-num;
+}
+
+.focus-btn, .quit-btn {
+  padding: 12px 48px;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  width: 180px;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.focus-btn {
+  background-color: white;
+  color: #a37e82; 
+  box-shadow: 0 4px 8px #ff149320;
+
+  &:hover:not(:disabled) {
+    background-color: #ffe6f0;
+    color: #5c433e;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.timer-page.green .focus-btn {
+  color: $color-green-num;
+  box-shadow: 0 4px 8px #b1eda0;
+  &:hover {
+    background: #edfff2;
+  }
+}
+
+.timer-photo {
+  height: 580px;
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 100%;
+    max-width: 350px;
+    object-fit: contain;
+  }
+}
+
+.theme-switch-btn {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: $color-pink-btn;
+  border: 3px solid #fff;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.2s;
+  z-index: 9;
+  box-shadow: 0 4px 16px #fff5f577;
+  outline: none;
+
+  &:hover {
+    box-shadow: 0 7px 20px #fd7dc3bb;
+    border-color: white;
+    //filter: brightness(1.1);
+  }
+  &:focus {
+    outline: none;
+    border-color: #5c433e;
+  }
+}
+.theme-switch-btn.green {
+  background: $color-green-btn;
+  box-shadow: 0 4px 16px #bcf7bb90;
+  &:hover {
+    box-shadow: 0 7px 20px #b3f4b7bb;
+    filter: brightness(1.1);
+  }
+}
+
+.timer-page {
+  z-index: 1;
+}
+
+/*@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One|Roboto+Mono:400,700&display=swap');
 
 :root {
   --font-family-primary: 'Roboto Mono', monospace;
@@ -150,7 +335,7 @@ html {
     }
   }
 
-/*.clock-container {
+.clock-container {
     display: flex;
     flex-direction: column;
     align-items: center;

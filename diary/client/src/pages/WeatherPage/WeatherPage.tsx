@@ -20,9 +20,12 @@ const morningImg = 'https://img.freepik.com/premium-photo/abstract-background-sk
 
 export const WeatherPage: React.FC = () => {
   const [query, setQuery] = useState('');
+  //Массив городов, для которых получена погода
   const [cities, setCities] = useState<WeatherData[]>([]);
+  //Данные выбранного города для модального окна
   const [selectedCityData, setSelectedCityData] = useState<WeatherData | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  //Массив id городов, добавленных в избранные
   const [favorites, setFavorites] = useState<number[]>(() => {
     // Считываем избранные из localStorage
     const saved = localStorage.getItem('weather-favorites');
@@ -47,6 +50,7 @@ export const WeatherPage: React.FC = () => {
     return daytimeImg;
   }
   
+  //useEffect для смены фона при смене времени
   useEffect(() => {
     const interval = setInterval(() => {
       setBackgroundImage(getBackgroundImageByTime());
@@ -55,9 +59,11 @@ export const WeatherPage: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  //функция загрузки погоды для Конкретного города
   const fetchWeather = async (cityName: string) => {
     setLoading(true);
-    setError(null);
+    //Сбрасываем прошлую ошибку
+    setError(null); 
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
@@ -80,13 +86,15 @@ export const WeatherPage: React.FC = () => {
     }
   };
 
+  //обработчик отправки формы поиска города
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Предотвращает стандартную отправку формы - перезагрузку страницы
     if (query.trim().length === 0) return;
-    fetchWeather(query.trim());
-    setQuery('');
+    fetchWeather(query.trim()); /// Загружаем погоду для введённого города
+    setQuery('');  // Очищаем поле ввода
   };
 
+  //показывает модалку
   const handleShowDetails = async (cityId: number) => {
     try {
       const city = cities.find(c => c.id === cityId);
@@ -99,6 +107,7 @@ export const WeatherPage: React.FC = () => {
       if (!res.ok) throw new Error('Ошибка получения детальной информации');
       const data: WeatherData = await res.json();
 
+      /// Записываем данные в state
       setSelectedCityData(data);
       setModalOpen(true);
     } catch (err: any) {
@@ -115,8 +124,10 @@ export const WeatherPage: React.FC = () => {
     setFavorites(prev => {
       let updated: number[];
       if (prev.includes(cityId)) {
+        //Если был - удаляем
         updated = prev.filter(id => id !== cityId);
       } else {
+         // Если не был - добавляем
         updated = [...prev, cityId];
       }
       localStorage.setItem('weather-favorites', JSON.stringify(updated));

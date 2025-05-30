@@ -9,12 +9,13 @@ import { useDispatch } from 'react-redux';
 import { setUser } from '@shared/store/userSlice';
 import Cookies from 'js-cookie'; // добавили библиотеку cookies
 
-// Схема валидации
+// Схема валидации (zod Библиотека)
 const loginSchema = z.object({
   email: z.string().email('Invalid email'),
   password: z.string().min(5, 'Password must be at least 6 characters'),
 });
 
+//автоматически создаёт тип (структуру данных) для формы, исходя из схемы loginSchema
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm = () => {
@@ -26,13 +27,17 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
+  //перехода между страницами
   const navigate = useNavigate();
+  //отправка экшенов в redux(глобальный стор приложения)
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
+  //отправкa формы
   const onSubmit = async (data: LoginFormValues) => {
     try {
       setLoading(true);
+      //post-запрос
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -47,15 +52,15 @@ export const LoginForm = () => {
         resData = { message: 'Server returned invalid response' };
       }
 
+      //код ответа 200
       if (res.ok) {
         Cookies.set('user', JSON.stringify({ id: 1, name: 'Test User' }), { expires: 7 });
-        alert('Cookie set');
       } else {
         alert(resData.message || 'Login failed');
         return;
       }
 
-      //Сохраняем токен в cookie
+      //Сохраняем токен (ключ для авторизации пользователя) в cookie
       if (resData.token) {
         Cookies.set('token', resData.token, { expires: 7 });
       }
@@ -81,6 +86,7 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="loginForm">
       <div className='emailBlock'>
         <b>Email</b>
+        {/*привязывает поле к react-hook-form для отслеживания/валидации*/}
         <Input
           type="email"
           {...register('email')}

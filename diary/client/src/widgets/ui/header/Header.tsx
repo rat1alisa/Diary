@@ -26,7 +26,7 @@ export const Header = () => {
           <ul className="menu">
             <li className="menu__item">
               <Link to="/" className="menu__link sixpx" onClick={closeMenu}>
-                MyApp
+                Library
               </Link>
             </li>
             <li className="menu__item">
@@ -41,7 +41,7 @@ export const Header = () => {
             </li>
             <li className="menu__item">
               <Link to="/clock" className="menu__link sixpx" onClick={closeMenu}>
-                Clock
+                Stopwatch
               </Link>
             </li>
             <li className="menu__item">
@@ -64,7 +64,7 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <ThemeToggle />
+        {/*<ThemeToggle />*/}
       </div>
   );
 };

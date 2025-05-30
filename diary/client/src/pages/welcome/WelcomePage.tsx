@@ -1,4 +1,4 @@
-import "./welcomePage.scss"
+import "./WealcomePage.scss"
 
 export const WelcomePage = () => {
 
@@ -10,7 +10,7 @@ export const WelcomePage = () => {
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://pbs.twimg.com/media/EIvyzZZVAAEYJ1A.jpg)"
+                    "url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA2L3JldHJvem9uZS1iZy0wMy14LmpwZw.jpg)"
                 }}
             />
             u
@@ -18,35 +18,34 @@ export const WelcomePage = () => {
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://i.etsystatic.com/9252886/r/il/7196e3/2271583630/il_570xN.2271583630_37o7.jpg)"
+                    "url(https://img.freepik.com/free-vector/hand-painted-watercolor-background-pink-with-sky-clouds-shape_41066-2077.jpg?semt=ais_hybrid&w=740)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://4kwallpapers.com/images/wallpapers/daisy-flowers-blue-2880x1800-12883.jpeg)"
+                    "url(https://wallpapers.com/images/hd/light-pink-aesthetic-pictures-nsy5ixni1ydacsto.jpg)"
                 }}
             />
             <div
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/736x/38/fa/f2/38faf2cbf855e3cb7fdb7a0f66c43502.jpg)"
+                    "url(https://i.pinimg.com/564x/d9/4c/bd/d94cbd5574d9e6a562db21d2e450dc6a.jpg)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(hhttps://i.pinimg.com/originals/24/39/59/2439596e5c2ff8bef1f9f52591e68249.png)"
+                    "url(https://i.pinimg.com/736x/1c/46/9f/1c469f20b8a46153ef8a7c25d0e0b123.jpg)"
                 }}
             />
             <div
                 className="line"
                 style={{
-                backgroundImage:
-                    "url(hhttps://i.pinimg.com/474x/dc/22/69/dc2269422b176013e5fc903bec495e5e.jpg)"
+                backgroundImage: "url(https://wallpapercave.com/wp/wp4956275.jpg)"
                 }}
             />
             </div>
@@ -55,42 +54,42 @@ export const WelcomePage = () => {
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://wallpapersok.com/images/thumbnail/aesthetic-light-blue-flower-petals-onp6muykuu6gjhkk.webp)"
+                    "url(https://i.pinimg.com/564x/5f/8d/15/5f8d1509229ff80481ccbc8401124614.jpg)"
                 }}
             />
             <div
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://www.gioia.com.au/cdn/shop/files/Bow-Pattern-Blue-Wallpaper-wallpaper-eco-friendly-easy-removal-Lucrecia-Caporale-1.jpg?v=1713047576)"
+                    "url(https://raketcontent.com/small_Untitled_design_c439478f27.png)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://media.istockphoto.com/id/1473121061/vector/vector-illustration-with-blue-curves-overlapping-background-margins-and-gradient-waves-and.jpg?s=612x612&w=0&k=20&c=Mp7wTkbVW2opnPEA-UzZvt8yjYMKo12Bkv7LHApDXqY=)"
+                    "url(https://img.freepik.com/free-vector/flat-design-wildflower-heart-background_23-2150534247.jpg?semt=ais_hybrid&w=740)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/736x/61/fe/38/61fe38bd683f6783fc2c5c5367511e6d.jpg)"
+                    "url(https://as1.ftcdn.net/v2/jpg/05/00/90/30/1000_F_500903029_iHKPHFVqLpBrLP4Z77CUlKT64GeMfeuG.jpg)"
                 }}
             />
             <div
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/736x/6d/2b/ee/6d2bee4defcf6836905af192207e818f.jpg)"
+                    "url(https://i.pinimg.com/736x/00/63/ec/0063ec09f172d89b163db8729a500959.jpg)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://cdn.magicdecor.in/com/2024/10/16181306/Aesthetic-Blue-Watercolor-Horizontal-Stripes-Wallpaper-Mural-710x488.jpg)"
+                    "url(https://i.pinimg.com/736x/54/43/78/544378f4ed1db90513dd0df22604c9f2.jpg)"
                 }}
             />
             </div>
@@ -99,42 +98,41 @@ export const WelcomePage = () => {
                 className="line "
                 style={{
                 backgroundImage:
-                    "url(https://www.itakeyou.co.uk/wp-content/uploads/2023/08/blue-wallpaper-18.jpg)"
+                    "url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BmLXMxMTItcGEtOTItMDEuanBn.jpg)"
                 }}
             />
             <div
                 className="line"
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/236x/a8/bf/a5/a8bfa5a3f805c2d70a0b6d990c16aea4.jpg)"
+                    "url(https://plus.unsplash.com/premium_photo-1669981123693-8b1f0fb5d4f1?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGluayUyMGFlc3RoZXRpY3xlbnwwfHwwfHx8MA%3D%3D)"
                 }}
             />
             <div
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://cdn.shopify.com/s/files/1/1038/1798/files/18._Aesthetic_Pastel_Blue_Color_Palette_Color_Palette_with_Alice_Blue_Hex_E5F0FA_Columbia_Blue_Hex_D1E8FC_Uranian_Blue_Hex_BDE0FE_Light_Sky_Blue_Hex_A2D2FF_Maya_Blue_Hex_8FC9FF_Color.png?v=1705581462)"
+                    "url(https://plus.unsplash.com/premium_photo-1671650125917-4cef01cd7574?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBpbmslMjBhZXN0aGV0aWN8ZW58MHx8MHx8fDA%3D)"
                 }}
             />
             <div
                 className="line "
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/236x/fc/f4/eb/fcf4eb277cd7a5c4818e1f6830d4f670.jpg)"
+                    "url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjEwMTMtcC0wMDAxYV8yLWtzaTg2cXlmLmpwZw.jpg)"
                 }}
             />
             <div
                 className="line"
                 style={{
-                backgroundImage:
-                    "url(https://static.vecteezy.com/system/resources/thumbnails/056/062/481/small_2x/ethereal-blue-and-white-abstract-background-photo.jpg)"
+                backgroundImage: "url(https://www.color-hex.com/palettes/1023874.png)"
                 }}
             />
             <div
                 className="line large"
                 style={{
                 backgroundImage:
-                    "url(https://i.pinimg.com/474x/dc/22/69/dc2269422b176013e5fc903bec495e5e.jpg)"
+                    "url(https://as2.ftcdn.net/v2/jpg/09/19/75/69/1000_F_919756907_qQZNPuUvsY1fPxFiqnjk9An2hIsY4U59.jpg)"
                 }}
             />
             </div>
@@ -145,7 +143,7 @@ export const WelcomePage = () => {
             <a href="https://www.instagram.com/stories/highlights/17873397626383767/">
                 Sign In{" "}
             </a>
-            <a href="https://github.com/rat1alisa">GitHub</a>
+            <a href="https://wa.me/5491168400468">GitHub</a>
             </nav>
         </div>
         </>

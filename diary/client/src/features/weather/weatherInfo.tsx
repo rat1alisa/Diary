@@ -4,7 +4,6 @@ interface WeatherData {
   weather: { description: string; icon: string }[];
   main: { temp: number; humidity: number };
   wind: { speed: number };
-  clouds: { all: number };
   rain?: { '1h'?: number; '3h'?: number };
   snow?: { '1h'?: number; '3h'?: number };
 
@@ -27,10 +26,10 @@ export const WeatherCard: React.FC<WeatherCardProps> = ({ data, favorite, onTogg
         className={`weather-card__favorite-btn ${favorite ? 'active' : ''}`}
         aria-label={favorite ? 'Убрать из избранного' : 'Добавить в избранное'}
       >
-        {favorite ? '💗ྀིྀི' : '🤍ྀི'}
+        {/*{favorite ? '💗ྀིྀི' : '🤍ྀི'}*/}
+        {favorite ? '💗' : '🤍'}
       </button>
       <div className="weather-card__main-info">
-        {/*<img src={iconUrl} alt={data.weather[0].description} />*/}
         <div className="weather-card__temp">{Math.round(data.main.temp)}°C</div>
       </div>
       <h3 className="weather-card__city">{data.name}</h3>
